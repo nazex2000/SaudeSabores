@@ -1,0 +1,124 @@
+@media screen and (max-width: 768px) {
+  .banana-over {
+    display: none;
+  }
+
+  .icon-main {
+    display: none;
+  }
+
+  .mid-container {
+    width: 100%;
+    padding: 20px;
+    height: auto;
+    padding-top: 55px;
+    padding-bottom: 55px;
+  }
+
+  .mid-title {
+    text-align: center;
+    width: 100%;
+    font-size: 28pt;
+  }
+
+  .mid-subtitle {
+    text-align: center;
+    font-size: 13pt;
+  }
+
+  .menu-bar {
+    display: none;
+  }
+
+  .menu-bar-icon {
+    display: block;
+  }
+
+  .mid-input {
+    width: 70%;
+    padding: 20px;
+  }
+  .mid-button {
+    margin-left: auto;
+    text-align: center;
+    width: 30%;
+  }
+  .mid-input-title {
+    font-size: 10pt;
+  }
+
+  .card {
+    flex-direction: column;
+  }
+  .chips-icon {
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+  }
+  .card-content {
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+  }
+  .ch-right {
+    border-radius: 0px 0px 16px 16px;
+  }
+  .card-content-pro {
+    width: 100% !important;
+    align-items: center;
+  }
+  .chips-icon-2 {
+    width: 100%;
+  }
+
+  .container-parc {
+    height: auto;
+    padding: 30px;
+  }
+
+  .icon-parc {
+    width: 200px;
+  }
+
+  .contact-container {
+    box-shadow: none;
+    flex-direction: column;
+  }
+  .left-contact-container {
+    width: 100%;
+    padding: 20px;
+  }
+  .right-contact-container {
+    width: 100%;
+    padding: 20px;
+    display: none;
+  }
+  .footer-newsletter {
+    width: 100%;
+  }
+
+  .menu-bar-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: fixed;
+    right: 0;
+    width: 200px;
+    background-color: rgba(255, 255, 255);
+    padding: 20px;
+    height: 100vh;
+    z-index: 999999999;
+  }
+
+  .text-menu {
+    margin-bottom: 1rem;
+  }
+
+  .text-menu a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .text-menu a:hover {
+    color: #fab007;
+  }
+}
