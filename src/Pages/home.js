@@ -2,7 +2,7 @@
 import axios from 'axios';
 import 'antd/dist/reset.css';
 import React from 'react';
-import { Form, Input, Button, notification, Divider } from 'antd';
+import { Form, Input, Button, notification, Divider, Modal } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
 import { FaArrowRight, FaEye, FaFacebook, FaInstagram, FaLocationArrow, FaMailBulk, FaMailchimp, FaPhone, FaRegArrowAltCircleRight, FaSearchLocation, FaTwitter, FaUsers } from 'react-icons/fa';
@@ -13,9 +13,39 @@ import '../Components/css/mobile.css';
 const Home = () => {
     const [loading, setLoading] = React.useState(false)
     const [menu, setMenu] = React.useState(false)
+    const [modalAbout, setModalAbout] = React.useState(false)
+    const [selectedProduct, setSelectedProduct] = React.useState({})
 
     const handleMenu = () => {
         setMenu(!menu)
+    }
+
+    const products = [
+        {
+            image: require('../assets/images/chips-banana.jpg'),
+            title: 'Chips de Batata Doce',
+            description: 'Os Chips de Batata Doce são fatias finas de batata doce que são habilmente cortadas e fritas até atingirem a perfeição crocante. Este snack saudável é feito a partir de batatas doces frescas, garantindo um sabor natural e uma textura irresistível. Além de serem deliciosos, os Chips de Batata Doce são uma excelente fonte de fibras, vitaminas A e C, e antioxidantes, proporcionando uma opção nutritiva para seus lanches. Com um equilíbrio perfeito entre doce e salgado, estes chips são ideais para quem procura um snack saudável sem comprometer o sabor. '
+        },
+        {
+            image: require('../assets/images/chips-mandioca.jpg'),
+            title: 'Chips de Mandioca',
+            description: 'Os Chips de Mandioca são deliciosas fatias finas de mandioca, cuidadosamente preparadas e fritas até alcançarem uma crocância perfeita. Feitos a partir de mandioca fresca, esses chips oferecem uma alternativa saborosa e nutritiva aos snacks tradicionais. A mandioca é uma excelente fonte de carboidratos, fibras, vitaminas e minerais, proporcionando energia e nutrição em cada mordida. Com seu sabor suave e textura crocante, os Chips de Mandioca são ideais para qualquer ocasião, seja como um lanche rápido, acompanhamento de refeições ou petisco para compartilhar com amigos e familiares. '
+        },
+        {
+            image: require('../assets/images/geleia-jams.png'),
+            title: 'Compotas, Geleias e Jams',
+            description: 'Na Saúde e Sabores, oferecemos uma deliciosa seleção de compotas, geleias e jams, produzidos a partir das melhores frutas frescas e ingredientes naturais. Cada produto é preparado com cuidado e atenção aos detalhes, garantindo sabor e qualidade em cada pote.'
+        }
+    ];
+
+    const handleProduct = (index) => {
+        try{
+        setSelectedProduct(products[index - 1])}
+        finally{setModalAbout(true)}
+    }
+
+    const goWiki = () => {
+        window.open('https://pt.wikipedia.org/wiki/Banana', '_blank')
     }
 
     return (
@@ -186,7 +216,7 @@ const Home = () => {
                                     sudeste asiático, a banana é conhecida por seu sabor doce e textura macia. Rica em nutrientes,
                                     a banana é uma excelente fonte de potássio, vitamina B6, vitamina C e fibras. Esses nutrientes são importantes para a saúde cardiovascular, a função muscular e a digestão.
                                 </p>
-                                <div className='button-about w-full'>
+                                <div className='button-about w-full' onClick={goWiki}>
                                     <p className='mid-button-title'>SABER MAIS</p>
                                     <FaRegArrowAltCircleRight size={20} color='white' />
                                 </div>
@@ -225,7 +255,7 @@ const Home = () => {
                                     <p className='product-text'>
                                         Deliciosos chips de banana, feitos com ingredientes naturais e sem adição de conservantes.
                                     </p>
-                                    <div className='button-about w-full'>
+                                    <div className='button-about w-full' onClick={() => handleProduct(1)}>
                                         <p className='mid-button-title'>SABER MAIS</p>
                                         <FaRegArrowAltCircleRight size={20} color='white' />
                                     </div>
@@ -241,7 +271,7 @@ const Home = () => {
                                     <p className='product-text'>
                                         Deliciosos chips de Mandioca, feitos com ingredientes naturais e sem adição de conservantes.
                                     </p>
-                                    <div className='button-about w-full'>
+                                    <div className='button-about w-full' onClick={() => handleProduct(2)}>
                                         <p className='mid-button-title'>SABER MAIS</p>
                                         <FaRegArrowAltCircleRight size={20} color='white' />
                                     </div>
@@ -257,11 +287,28 @@ const Home = () => {
                                     <p className='product-text'>
                                         Deliciosos chips de Mandioca, feitos com ingredientes naturais e sem adição de conservantes.
                                     </p>
-                                    <div className='button-about w-full'>
+                                    <div className='button-about w-full' onClick={() => handleProduct(3)}>
                                         <p className='mid-button-title'>SABER MAIS</p>
                                         <FaRegArrowAltCircleRight size={20} color='white' />
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div className='flex flex-col justify-center align-center w-full mt-8'>
+                            <p className='card-title'>Saiba Mais</p>
+                            <div className='card w-full mx-auto my-3 mt-5' style={{ maxWidth: '1100px' }}>
+                                <div className='card-content-pro'>
+                                    <p className='card-about-title t-left'>Conheça a <span style={{ color: '#FFB30E' }}>Stela Miambo</span></p>
+                                    <p className='card-about-text py-2'>
+                                        Stela Miambo é a talentosa confeiteira por trás dos deliciosos Chips Saúde e Sabores. Com uma paixão pela culinária saudável e um talento
+                                        natural para criar combinações irresistíveis de sabores, Stela tem conquistado o paladar dos nossos clientes com seus chips nutritivos e saborosos. Venha
+                                        conhecer e se deliciar com as criações da Stela Miambo e descubra como é possível unir saúde e sabor em cada pacote dos nossos chips!
+                                    </p>
+                                </div>
+                                <img
+                                    src={require('../assets/images/stelaa_art.jpg')}
+                                    className='chips-icon-2 ch-right'
+                                />
                             </div>
                         </div>
                         <div className='flex flex-col justify-center align-center w-full mt-8' id='contact'>
@@ -352,6 +399,24 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
+                    <Modal
+                        visible={modalAbout}
+                        footer={null}
+                        onCancel={() => setModalAbout(false)}
+                        width={500}
+                        centered
+                        title={<p className='product-title'>Saiba Mais</p>}
+                    >
+                        <img
+                            src={selectedProduct.image}
+                            className='img-modal'
+                        />
+                        <p className='product-title'>{selectedProduct.title}</p>
+                        <p className='product-text'>
+                            {selectedProduct.description}
+                        </p>
+
+                    </Modal>
                     <div className='footer'>
                         <div className='footer-content'>
                             <div className='flex flex-col sm:flex-row gap-8 sm:gap-16 w-full'>

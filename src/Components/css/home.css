@@ -494,3 +494,11 @@
   border: none;
   padding-left: 10px;
 }
+
+.img-modal{
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
